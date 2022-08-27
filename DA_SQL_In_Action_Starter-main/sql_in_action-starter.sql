@@ -2,7 +2,7 @@
 -- TODO: Remove the "--" from the below SELECT query and run the query
 --    NOTE: When writing queries, make sure each one ends with a semi-colon
 
-SELECT * FROM final_airbnb;
+-- SELECT * FROM final_airbnb;
 
 
 
@@ -18,7 +18,7 @@ SELECT * FROM final_airbnb;
 
 -- EXPECTED OUTPUT: Patricia
 
-SELECT * FROM final_airbnb WHERE host_id = 63613;
+-- SELECT * FROM final_airbnb WHERE host_id = 63613;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 3 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to just show the unique neighbourhoods listed
@@ -26,6 +26,7 @@ SELECT * FROM final_airbnb WHERE host_id = 63613;
 
 -- EXPECTED OUTPUT: 40 neighbourhoods listed
 
+-- SELECT DISTINCT neighbourhood FROM final_airbnb;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 4 >>>>>>>>>>>>>>>>>>>>>>>
 
@@ -36,6 +37,7 @@ SELECT * FROM final_airbnb WHERE host_id = 63613;
 
 -- EXPECTED OUTPUT: Highest = 785, Lowest = 55
 
+SELECT MIN(price), MAX(price) FROM final_airbnb; 
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 5 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the average availability for all listings in the data set (using the availability_365 column)
