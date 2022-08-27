@@ -45,7 +45,7 @@
 
 -- EXPECTED OUTPUT: 165.3904
 
-SELECT AVG(availability_365) FROM final_airbnb;
+-- SELECT AVG(availability_365) FROM final_airbnb;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 6 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find all listings that do NOT have a review
@@ -53,6 +53,7 @@ SELECT AVG(availability_365) FROM final_airbnb;
 
 -- EXPECTED OUTPUT: 6 rows
 
+-- SELECT * FROM final_airbnb WHERE number_of_reviews = 0;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 7 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the id of the listing with a room_type of "Private room" that has the most reviews 
@@ -60,6 +61,7 @@ SELECT AVG(availability_365) FROM final_airbnb;
 
 -- EXPECTED OUTPUT: 58059
 
+-- SELECT id FROM final_airbnb ORDER BY number_of_reviews DESC, room_type = Private;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 8 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the most popular neighbourhood for listings 
@@ -68,6 +70,9 @@ SELECT AVG(availability_365) FROM final_airbnb;
 
 -- EXPECTED OUTPUT: Williamsburg
 -- INVESTIGATE: Should Williamsburg be crowned the most popular neighbourhood?
+
+-- SELECT neighbourhood FROM final_airbnb GROUP BY neighbourhood ORDER BY COUNT(neighbourhood) DESC;
+-- My finding show that Williamsburg and Harlem both have 16 appearances. How do we create this as an output/print the number of appearances for each neighbourhood?
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 9 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to discover which listing is the most popular using the reviews_per_month for all listings with a minimum_nights value of less than 7
