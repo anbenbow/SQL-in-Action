@@ -18,7 +18,7 @@
 
 -- EXPECTED OUTPUT: Patricia
 
--- SELECT * FROM final_airbnb WHERE host_id = 63613;
+-- SELECT host_name FROM final_airbnb WHERE host_id = 63613;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 3 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to just show the unique neighbourhoods listed
@@ -61,8 +61,9 @@
 
 -- EXPECTED OUTPUT: 58059
 
--- SELECT id FROM final_airbnb ORDER BY number_of_reviews DESC, room_type DESC;
---  (CASE WHEN room_type = Private room)?
+-- SELECT id FROM final_airbnb ORDER BY room_type DESC,  number_of_reviews DESC;
+-- SELECT id FROM final_airbnb ORDER BY CASE room_type WHEN 'Private room' THEN MAX(number_of_reviews);
+-- SELECT id FROM final_airbnb ORDER BY CASE room_type WHEN 'Private room' THEN number_of_reviews DESC;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 8 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the most popular neighbourhood for listings 
@@ -72,8 +73,8 @@
 -- EXPECTED OUTPUT: Williamsburg
 -- INVESTIGATE: Should Williamsburg be crowned the most popular neighbourhood?
 
--- SELECT neighbourhood FROM final_airbnb GROUP BY neighbourhood ORDER BY COUNT(neighbourhood) DESC;
--- My finding show that Williamsburg and Harlem both have 16 appearances. How do we create this as an output/print the number of appearances for each neighbourhood?
+-- SELECT neighbourhood, count(neighbourhood) FROM final_airbnb GROUP BY neighbourhood ORDER BY COUNT(neighbourhood) DESC;
+-- Williamsburg should not be crowned the most popular neighbourhood because Harlem also has 16 appearances in the data. 
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 9 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to discover which listing is the most popular using the reviews_per_month for all listings with a minimum_nights value of less than 7
@@ -91,9 +92,9 @@
 
 -- EXPECTED OUTPUT: The Box House Hotel with 6 listings
 
--- SELECT DISTINCT host_name FROM final_airbnb ORDER BY host_name ASC; 
-ALTER TABLE final_airbnb DROP COLUMN total_listings;
-SELECT * FROM final_airbnb;
+-- ALTER TABLE final_airbnb ADD COLUMN total_listings_for_host varchar(146);
+-- SELECT host_name, COUNT(*) as total_listings_for_host FROM final_airbnb GROUP BY host_name ORDER BY COUNT(host_name) DESC;
+
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 11 >>>>>>>>>>>>>>>>>>>>>>>
 -- <<<<<<<<<<<<<<<<<<<<<<< WRAP UP >>>>>>>>>>>>>>>>>>>>>>>>>
 -- What do you think makes a successful AirBnB rental in this market? What factors seem to be at play the most?
