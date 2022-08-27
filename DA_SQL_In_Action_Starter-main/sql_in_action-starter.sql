@@ -2,7 +2,7 @@
 -- TODO: Remove the "--" from the below SELECT query and run the query
 --    NOTE: When writing queries, make sure each one ends with a semi-colon
 
--- SELECT * FROM final_airbnb;
+SELECT * FROM final_airbnb;
 
 
 
@@ -10,6 +10,7 @@
 -- Find out how many rows are in the table "final_airbnb"
 -- EXPECTED OUTPUT: 146
 
+-- SELECT COUNT(id) FROM final_airbnb;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 2 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find out the name of the host for "host_id" 63613
@@ -17,6 +18,7 @@
 
 -- EXPECTED OUTPUT: Patricia
 
+SELECT * FROM final_airbnb WHERE host_id = 63613;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 3 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to just show the unique neighbourhoods listed
