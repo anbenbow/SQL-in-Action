@@ -37,7 +37,7 @@
 
 -- EXPECTED OUTPUT: Highest = 785, Lowest = 55
 
-SELECT MIN(price), MAX(price) FROM final_airbnb; 
+-- SELECT MIN(price), MAX(price) FROM final_airbnb; 
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 5 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the average availability for all listings in the data set (using the availability_365 column)
@@ -45,6 +45,7 @@ SELECT MIN(price), MAX(price) FROM final_airbnb;
 
 -- EXPECTED OUTPUT: 165.3904
 
+SELECT AVG(availability_365) FROM final_airbnb;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 6 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find all listings that do NOT have a review
