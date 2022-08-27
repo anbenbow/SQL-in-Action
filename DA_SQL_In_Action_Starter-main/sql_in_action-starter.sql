@@ -61,7 +61,8 @@
 
 -- EXPECTED OUTPUT: 58059
 
--- SELECT id FROM final_airbnb ORDER BY number_of_reviews DESC, room_type = Private;
+-- SELECT id FROM final_airbnb ORDER BY number_of_reviews DESC, room_type DESC;
+--  (CASE WHEN room_type = Private room)?
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 8 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the most popular neighbourhood for listings 
@@ -80,6 +81,7 @@
 
 -- EXPECTED OUTPUT: 58059
 
+-- SELECT id FROM final_airbnb ORDER BY reviews_per_month DESC, minimum_nights < 7;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 10 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find out which host has the most listings. 
@@ -89,7 +91,9 @@
 
 -- EXPECTED OUTPUT: The Box House Hotel with 6 listings
 
-
+-- SELECT DISTINCT host_name FROM final_airbnb ORDER BY host_name ASC; 
+ALTER TABLE final_airbnb DROP COLUMN total_listings;
+SELECT * FROM final_airbnb;
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 11 >>>>>>>>>>>>>>>>>>>>>>>
 -- <<<<<<<<<<<<<<<<<<<<<<< WRAP UP >>>>>>>>>>>>>>>>>>>>>>>>>
 -- What do you think makes a successful AirBnB rental in this market? What factors seem to be at play the most?
