@@ -98,17 +98,16 @@ SELECT host_name, COUNT(*) as total_listings_for_host FROM final_airbnb GROUP BY
 -- What do you think makes a successful AirBnB rental in this market? What factors seem to be at play the most?
 -- Write a few sentances and include them with your project submission in the README file 
 
-SELECT * FROM final_airbnb WHERE number_of_reviews >=300;
+SELECT * FROM final_airbnb WHERE number_of_reviews >=300 LIMIT 10;
 SELECT neighbourhood_group, COUNT(neighbourhood_group) FROM final_airbnb WHERE number_of_reviews >=300 GROUP BY neighbourhood_group ORDER BY count(neighbourhood_group) DESC;
 SELECT neighbourhood, COUNT(neighbourhood) FROM final_airbnb WHERE number_of_reviews >=300 GROUP BY neighbourhood ORDER BY count(neighbourhood) DESC;
 
--- Location is definitely a key factor in having a successful AirBnB rental in this market. The data shows that Brooklyn and Manhattan, specifically Williamsburg and Harlem, are well sought after neighborhoods. At this time neither borough has solidified bragging rights to be crowned the most popular, as the data shows they are still neck and neck in the current AirBnB rental market. I am interested to see if either borough is able to take a significant lead in the upcoming quarter.  
+-- Location is definitely a key factor in having a successful AirBnB rental in this market. The data shows that Manhattan is a well sought after neighborhood with 7 of the top 10 most reviewed listings. 
 
 -- <<<<<<<<<<<<<<<<<<<<< ** BONUS ** >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the the percent above or below each listing is compared to the average price for that neighbourhood.
 -- HINT: No hints! It's a bonus for a reason :)
 
-SELECT id, price as price_plus_minus FROM final_airbnb ORDER BY id, price_plus_minus; 
+SELECT id, price/avg(price) as price_plus_minus FROM final_airbnb ORDER BY id, price_plus_minus; 
 
-SELECT id, avg(price) from final_airbnb ORDER BY id
 -- only selecting first row not complete table
