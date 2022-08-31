@@ -60,10 +60,8 @@ SELECT * FROM final_airbnb WHERE number_of_reviews = 0;
 -- HINT: Sorting is your friend!
 
 -- EXPECTED OUTPUT: 58059
+SELECT id FROM final_airbnb WHERE room_type = 'Private Room' ORDER BY number_of_reviews DESC LIMIT 1;
 
-SELECT id FROM final_airbnb ORDER BY room_type DESC,  number_of_reviews DESC;
--- SELECT id FROM final_airbnb ORDER BY CASE room_type WHEN 'Private room' THEN MAX(number_of_reviews);
--- SELECT id FROM final_airbnb ORDER BY CASE room_type WHEN 'Private room' THEN number_of_reviews DESC;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 8 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the most popular neighbourhood for listings 
@@ -101,8 +99,8 @@ SELECT host_name, COUNT(*) as total_listings_for_host FROM final_airbnb GROUP BY
 -- Write a few sentances and include them with your project submission in the README file 
 
 SELECT * FROM final_airbnb WHERE number_of_reviews >=300;
-SELECT neighbourhood_group, COUNT(neighbourhood_group) FROM final_airbnb GROUP BY neighbourhood_group ORDER BY count(neighbourhood_group) DESC;
-SELECT neighbourhood, COUNT(neighbourhood) FROM final_airbnb GROUP BY neighbourhood ORDER BY count(neighbourhood) DESC;
+SELECT neighbourhood_group, COUNT(neighbourhood_group) FROM final_airbnb WHERE number_of_reviews >=300 GROUP BY neighbourhood_group ORDER BY count(neighbourhood_group) DESC;
+SELECT neighbourhood, COUNT(neighbourhood) FROM final_airbnb WHERE number_of_reviews >=300 GROUP BY neighbourhood ORDER BY count(neighbourhood) DESC;
 
 -- Location is definitely a key factor in having a successful AirBnB rental in this market. The data shows that Brooklyn and Manhattan, specifically Williamsburg and Harlem, are well sought after neighborhoods. At this time neither borough has solidified bragging rights to be crowned the most popular, as the data shows they are still neck and neck in the current AirBnB rental market. I am interested to see if either borough is able to take a significant lead in the upcoming quarter.  
 
@@ -110,5 +108,7 @@ SELECT neighbourhood, COUNT(neighbourhood) FROM final_airbnb GROUP BY neighbourh
 -- Find the the percent above or below each listing is compared to the average price for that neighbourhood.
 -- HINT: No hints! It's a bonus for a reason :)
 
-SELECT id, price/avg(price) as price_plus_minus FROM final_airbnb ORDER BY id, price_plus_minus; 
+SELECT id, price as price_plus_minus FROM final_airbnb ORDER BY id, price_plus_minus; 
+
+SELECT id, avg(price) from final_airbnb ORDER BY id
 -- only selecting first row not complete table
